@@ -1,0 +1,5 @@
+/** 
+with open("WSJ_02-21.pos", 'r') as f:
+    lines = f.readlines()
+    
+ 
