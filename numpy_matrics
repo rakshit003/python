@@ -1,0 +1,71 @@
+Numpy allows vectorized operations which means that operations that would normally include looping over the matrix can be done in a simpler manner.
+This is consistent with treating numpy arrays as matrices since you get support for common matrix operations.
+You can do matrix multiplication, scalar multiplication, vector addition and many more!
+
+For instance try scaling each value in the matrix by a factor of  110 . Normally you would loop over each value in the matrix, 
+updating them accordingly. But in Numpy this is as easy as dividing the whole matrix by 10
+
+# Scale transition matrix
+transition_matrix = transition_matrix/10
+
+# Print scaled matrix
+print_matrix(transition_matrix)
+
+Another trickier example is to normalize each row so that each value is equal <=1
+
+# Compute sum of row for each row
+rows_sum = transition_matrix.sum(axis=1, keepdims=True)
+
+# Print sum of rows
+rows_sum
+
+Notice that the sum() method was used. This method does exactly what its name implies. 
+Since the sum of the rows was desired the axis was set to 1. In Numpy axis=1 refers to the columns so the sum is done by summing each column of a particular row, for each row.
+
+Also the keepdims parameter was set to True so the resulting array had shape (3, 1) rather than (3,). 
+This was done so that the axes were consistent with the desired operation.
+When working with Numpy, always remember to check the shape of the arrays you are working with, 
+many unexpected errors happen because of axes not being consistent. The shape attribute is your friend for these cases.
+
+# Normalize transition matrix
+transition_matrix = transition_matrix / rows_sum
+
+# Print normalized matrix
+print_matrix(transition_matrix)
+
+transition_matrix.sum(axis=1, keepdims=True)
+
+# Save diagonal in a numpy array
+d = np.diag(t_matrix_np)
+
+# Print shape of diagonal
+d.shape
+
+You can save the diagonal in a numpy array using Numpy's diag() function. Notice that this array has shape (3,) 
+so it is inconsistent with the dimensions of the rows_sum array which are (3, 1). You'll have to reshape before moving forward.
+For this you can use Numpy's reshape() function, specifying the desired shape in a tuple:
+
+# Reshape diagonal numpy array
+d = np.reshape(d, (3,1))
+
+# Print shape of diagonal
+d.shape
+
+Now that the diagonal has the correct shape you can do the vectorized operation by applying the math.log() function to the rows_sum array and adding the diagonal.
+
+To apply a function to each element of a numpy array use Numpy's vectorize() function providing the desired function as a parameter.
+This function returns a vectorized function that accepts a numpy array as a parameter.
+To update the original matrix you can use Numpy's fill_diagonal() function
+
+# Perform the vectorized operation
+d = d + np.vectorize(math.log)(rows_sum)
+
+# Use numpy's 'fill_diagonal' function to update the diagonal
+np.fill_diagonal(t_matrix_np, d)
+
+# Print the matrix
+print_matrix(t_matrix_np)
+
+# Check for equality
+t_matrix_for == t_matrix_np
+
