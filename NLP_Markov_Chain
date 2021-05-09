@@ -1,0 +1,3 @@
+#Transition Probability is matrics of all the states(in NLP the each parts of speach is a state) thier probability of movement to the next state(POS).
+#it also contain an initial probablity of the first word
+#emission probability: given a state(POS) what is the word observable. based on the corpus which word maps to which POS
