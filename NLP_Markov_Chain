@@ -3,3 +3,31 @@
 #emission probability: given a state(POS) what is the word observable. based on the corpus which word maps to which POS, 
   calculated by (word appearing for a give POS)/total POS Appearences.
 
+# Define tags for Adverb, Noun and To (the preposition) , respectively
+tags = ['RB', 'NN', 'TO']
+
+# Define 'transition_counts' dictionary
+# Note: values are the same as the ones in the assignment
+transition_counts = {
+    ('NN', 'NN'): 16241,
+    ('RB', 'RB'): 2263,
+    ('TO', 'TO'): 2,
+    ('NN', 'TO'): 5256,
+    ('RB', 'TO'): 855,
+    ('TO', 'NN'): 734,
+    ('NN', 'RB'): 2431,
+    ('RB', 'NN'): 358,
+    ('TO', 'RB'): 200
+}
+
+# Loop rows
+for i in range(num_tags):
+    # Loop columns
+    for j in range(num_tags):
+        # Define tag pair
+        tag_tuple = (sorted_tags[i], sorted_tags[j])
+        # Get frequency from transition_counts dict and assign to (i, j) position in the matrix
+        transition_matrix[i, j] = transition_counts.get(tag_tuple)
+
+# Print matrix
+transition_matrix
