@@ -2,6 +2,7 @@
 #it also contain an initial probablity of the first word
 #emission probability: given a state(POS) what is the word observable. based on the corpus which word maps to which POS, 
   calculated by (word appearing for a give POS)/total POS Appearences.
+#idea is to predict the next word given a word --> firstly find most probable POS then most probable word of the POS using the existing corpus
 
 # Define tags for Adverb, Noun and To (the preposition) , respectively
 tags = ['RB', 'NN', 'TO']
