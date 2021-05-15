@@ -55,6 +55,20 @@ print('This is a sample of the test_corpus: ')
 print(prep[0:10])
 
 ##Parts-of-speech tagging
+Transition counts:
+    The first dictionary is the transition_counts dictionary which computes the number of times each tag happened next to another tag.
+        In order for you to compute equation 1, you will create a transition_counts dictionary where
+        The keys are (prev_tag, tag)
+        The values are the number of times those two tags appeared in that order.
+        
+Emission counts:
+    The second dictionary you will compute is the emission_counts dictionary. This dictionary will be used to compute:
+    (tag, word)
+
+Tag counts:
+    The last dictionary you will compute is the tag_counts dictionary.
+    The key is the tag, The value is the number of times each tag appeared.
+    
 
 emission_counts: maps (tag, word) to the number of times it happened.
 transition_counts: maps (prev_tag, tag) to the number of times it has appeared.
@@ -188,43 +202,36 @@ def predict_pos(prep, y, emission_counts, vocab, states):
         # If the word is in the vocabulary...
         if word in vocab:
             for pos in states:
-
             ### START CODE HERE (Replace instances of 'None' with your code) ###
                         
                 # define the key as the tuple containing the POS and word
-                key = None
+                key = (pos,word)
 
                 # check if the (pos, word) key exists in the emission_counts dictionary
-                if key in None: # complete this line
+                if key in emission_counts: # complete this line
 
                 # get the emission count of the (pos,word) tuple 
-                    count = None
+                    count = emission_counts[key]
 
                     # keep track of the POS with the largest count
-                    if None: # complete this line
+                    if count>count_final: # complete this line
 
                         # update the final count (largest count)
-                        count_final = None
+                        count_final = count
 
                         # update the final POS
-                        pos_final = None
+                        pos_final = pos
 
             # If the final POS (with the largest count) matches the true POS:
-            if None: # complete this line
+            if pos_final==true_label: # complete this line
                 
                 # Update the number of correct predictions
-                num_correct += None
+                num_correct += 1
             
     ### END CODE HERE ###
     accuracy = num_correct / total
     
     return accuracy
-    
-    
-   #Hidden Markov Models for POS
-   
-   
-
 
 
 
