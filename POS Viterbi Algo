@@ -82,6 +82,16 @@ print(f"best_paths[2,3]: {best_paths[2,3]:.4f}")
 ### j-- Represents the jth tag of the current state
 
 
+for each POS tag type that this word may be
 
+    for POS tag type that the previous word could be
 
+        compute the probability that the previous word had a given POS tag, that the current word has a given POS tag, and that the POS tag would emit this current word.
 
+        retain the highest probability computed for the current word
+
+        set best_probs to this highest probability
+
+        set best_paths to the index 'k', representing the POS tag of the previous word which produced the highest probability `
+        
+   
