@@ -1,0 +1,31 @@
+# remove special characters
+corpus = "learning% makes 'me' happy. i am happy be-cause i am learning! :)"
+corpus = re.sub(r"[^a-zA-Z0-9.?! ]+", "", corpus)
+print(corpus)
+
+
+#text spliting
+
+  ## split text by a delimiter to array
+  input_date="Sat May  9 07:33:35 CEST 2020"
+
+  # get the date parts in array
+  date_parts = input_date.split(" ")
+  print(f"date parts = {date_parts}")
+
+  #get the time parts in array
+  time_parts = date_parts[4].split(":")
+  print(f"time parts = {time_parts}")
+  
+# tokenize the sentence into an array of words
+
+sentence = 'i am happy because i am learning.'
+tokenized_sentence = nltk.word_tokenize(sentence)
+print(f'{sentence} -> {tokenized_sentence}')
+
+#Now that the sentence is tokenized, you can work with each word in the sentence separately. This will be useful later when creating and counting N-grams. In the following code example, you will see how to find the length of each word.
+
+# find length of each word in the tokenized sentence
+sentence = ['i', 'am', 'happy', 'because', 'i', 'am', 'learning', '.']
+word_lengths = [(word, len(word)) for word in sentence] # Create a list with the word lengths using a list comprehension
+print(f' Lengths of the words: \n{word_lengths}')
