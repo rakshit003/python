@@ -18,3 +18,9 @@ tokenized_sentence = ['i', 'am', 'happy', 'because', 'i', 'am', 'learning', '.']
 
 print(f'List all trigrams of sentence: {tokenized_sentence}\n')
 sentence_to_trigram(tokenized_sentence)
+
+# when working with trigrams, you need to prepend 2 <s> and append one </s>
+n = 3
+tokenized_sentence = ['i', 'am', 'happy', 'because', 'i', 'am', 'learning', '.']
+tokenized_sentence = ["<s>"] * (n - 1) + tokenized_sentence + ["</s>"]
+print(tokenized_sentence)
