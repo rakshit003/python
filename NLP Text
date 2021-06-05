@@ -1,0 +1,20 @@
+def sentence_to_trigram(tokenized_sentence):
+    """
+    Prints all trigrams in the given tokenized sentence.
+    
+    Args:
+        tokenized_sentence: The words list.
+    
+    Returns:
+        No output
+    """
+    # note that the last position of i is 3rd to the end
+    for i in range(len(tokenized_sentence) - 3 + 1):
+        # the sliding window starts at position i and contains 3 words
+        trigram = tokenized_sentence[i : i + 3]
+        print(trigram)
+
+tokenized_sentence = ['i', 'am', 'happy', 'because', 'i', 'am', 'learning', '.']
+
+print(f'List all trigrams of sentence: {tokenized_sentence}\n')
+sentence_to_trigram(tokenized_sentence)
