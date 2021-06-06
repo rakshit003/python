@@ -24,3 +24,21 @@ n = 3
 tokenized_sentence = ['i', 'am', 'happy', 'because', 'i', 'am', 'learning', '.']
 tokenized_sentence = ["<s>"] * (n - 1) + tokenized_sentence + ["</s>"]
 print(tokenized_sentence)
+
+##### NLP Language Models ####
+Steps:
+
+-Count matrix
+-Probability matrix
+-Language model
+-Log probability to avoid underflow
+-Generative language model
+
+
+    - in Count Matrix rows correspond to first word on bi Gram, column corresponds to 2nd word on bi gram
+    -Sum of a row is all words that starts with a given start of bigram, so if we divide each cell of a row by its rowsum we get the bigram probability
+    - to get proabability of a sentense multiply all the probability using prob matrix of each bigram
+    
+     eg: <s> I Like Cat </s>
+
+     probability of above sentense using bi gram= P(I/<s>)*P(Like/I)*P(Cat/like)*P(</s>/Cat)
