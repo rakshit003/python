@@ -278,3 +278,23 @@ p = 10 ** (-250)
 M = 100
 perplexity = p ** (-1 / M)
 print(perplexity)
+
+
+################Smoothing##############
+Smoothing helps define probabilities of pairs where the N Gram is not present in corpur.
+
+The three main concepts covered here are dealing with missing n-grams, smoothing, and Backoff and interpolation. 
+
+P(wn∣wn−1n−N+1)=C(wn−1n−N+1,wn)C(wn−1n−N+1) can be 0
+Hence we can add-1 smoothing as follows to fix that problem: 
+
+P(wn∣wn−1)=C(wn−1,wn)+1∑w∈V(C(wn−1,w)+1)=C(wn−1,wn)+1C(wn−1)+V
+Add-k smoothing is very similar: 
+
+P(wn∣wn−1)=C(wn−1,wn)+k∑w∈V(C(wn−1,w)+k)=C(wn−1,wn)+kC(wn−1)+k∗V
+
+When using back-off:
+
+If N-gram missing => use (N-1)-gram, …: Using the lower level N-grams (i.e. (N-1)-gram, (N-2)-gram, down to unigram) distorts the probability distribution. Especially for smaller corpora, some probability needs to be discounted from higher level N-grams to use it for lower level N-grams.
+Probability discounting e.g. Katz backoff: makes use of discounting. 
+“Stupid” backoff: If the higher order N-gram probability is missing, the lower order N-gram probability is used, just multiplied by a constant. A constant of about 0.4 was experimentally shown to work well.
