@@ -1,0 +1,11 @@
+Train/Val/Test splits
+Smaller Corpora: 
+
+80% train
+10% val 
+10% test
+Larger Corpora: 
+
+98% train
+1% val 
+1% test
