@@ -6,6 +6,8 @@ eg: if a vocabulary is defined of all the words in the corpurs with 2 or more oc
 Criteria to create Vocabulary
 1. Include words with > threshold frequency
 2. Define Max words in vocab(vocab size) and sort them based of max frequenct
+-Use <UNK> sparingly (Why?)
+-Perplexity -  only compare LMs with the same V
 
 /** 
 with open("WSJ_02-21.pos", 'r') as f:
