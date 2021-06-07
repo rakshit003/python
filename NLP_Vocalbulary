@@ -3,6 +3,10 @@ eg: A chatbot can answer only a fixed set of words, these set of words are calle
 Open Vocabulary: encounter of words out of vocabuary(OOV). All these words can be replaced with 'UNK'.
 eg: if a vocabulary is defined of all the words in the corpurs with 2 or more ocuurances then all single freq words will be replaced by 'UNK' along with other OOV words.
 
+Criteria to create Vocabulary
+1. Include words with > threshold frequency
+2. Define Max words in vocab(vocab size) and sort them based of max frequenct
+
 /** 
 with open("WSJ_02-21.pos", 'r') as f:
     lines = f.readlines()
