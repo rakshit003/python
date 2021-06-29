@@ -12,6 +12,7 @@ Larger Corpora:
 
 
 /*****************Stratified kfold techniques**************/
+#python file name creats_folds.py
 # Stratified K Fold file SPlit
 #Aim is to create a file train_fold.csv from train.csv . train_fold file is same
 # as train but the data is shuffeled and it has a new column kfold
