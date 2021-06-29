@@ -1,0 +1,42 @@
+###########Building NN in Keras############
+
+  model = tf.keras.models.Sequential([
+    # deconstruct / encode
+     tf.keras.layers.Dense(50, input_shape=shape, activation='relu',kernel_initializer=init),
+#     tf.keras.layers.Dropout(0.1),
+     tf.keras.layers.Dense(25, activation='relu'),
+#      tf.keras.layers.Dropout(0.1),
+     tf.keras.layers.Dense(5, activation='relu'),
+
+   # reconstruction / decode
+     tf.keras.layers.Dense(5, activation='relu'),
+     
+    tf.keras.layers.Dense(25, activation='relu'),
+#      tf.keras.layers.Dropout(0.1),
+     tf.keras.layers.Dense(50, activation='relu'),
+#      tf.keras.layers.Dropout(0.1),
+     tf.keras.layers.Dense(shape[1], activation='linear') 
+    ])
+    model.compile(optimizer=tf.keras.optimizers.Adam(lr=0.01),loss="mse",metrics=["acc"])
+#    model.compile(loss="mse", optimizer=tf.keras.optimizers.Adam(lr=0.001), metrics=['accuracy'])
+    
+    model.summary()
+    
+    
+model.fit(data,data,epochs=100,batch_size=20,validation_split=0.3)
+
+
+###################Getting imtermediate layer output  in keras#############
+model = keras.Sequential()
+model.add(keras.layers.Dense(32, input_dim=6, activation='relu'))
+model.add(keras.layers.Dense(16, activation='relu', name='embedded_layer'))
+model.add(keras.layers.Dense(1, activation='sigmoid'))
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+# fit the keras model on the dataset
+model.fit(X, y, epochs=150, batch_size=10)
+
+
+#get the embedded layer output
+layer_output = model.get_layer('embedded_layer').output
+activation_model = keras.Model(inputs=model.input, outputs=layer_output)
