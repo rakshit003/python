@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 26 23:21:00 2021
+
+@author: rakshit
+"""
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.metrics import plot_confusion_matrix
+from sklearn import model_selection
+from pyod.models.knn import KNN
+from pyod.models.lof import LOF
+from sklearn import metrics
+from sklearn.metrics import confusion_matrix
+import numpy as np
+
+df= pd.read_csv(r'/Users/rakshit/Documents/work/Data Science/Anomaly Detection/data/creditcard/creditcard.csv')
+
+df=df.sample(frac=0.6,random_state=1)
+
+
+#features to be used
+exclude_cols= ('Time','Class')
+features = [cols for cols in df.columns if cols not in exclude_cols]
+
+## Extract Training set
+
+X_data= df[features]
+y_data=df.Class
+
+anomaly_fraction= sum(y_data==1)/sum(y_data==0)
+
+X_train,X_test,y_train,y_test= model_selection.train_test_split(X_data,y_data,test_size=0.2,random_state=1,stratify=y_data)
+
+n_clf = 5  # number of base detectors
+
+# Initialize 20 base detectors for combination
+k_list = [10,20,200,50,40]
+
+train_scores = np.zeros([X_train.shape[0], n_clf])
+test_scores = np.zeros([X_test.shape[0], n_clf])
+
+print('Initializing {n_clf} detectors'.format(n_clf=n_clf))
+
+def anomaly_detector(method):
+    
+    f1_best=0
+    Recall_best=0
+    Precision_best=0
+    k_best=0
+    for i in range(n_clf):
+        k = k_list[i]
+        if method== 'KNN':
+            clf = KNN(n_neighbors=k, method='largest')
+        if method== 'LOF':
+            clf = LOF(n_neighbors=k)        
+        clf.fit(X_train)
+        train_scores[:, i] = clf.decision_scores_
+        test_scores[:, i] = clf.decision_function(X_test)  #decision function is used on new data Output is anomaly score
+        test_out=clf.predict(X_test)
+        print(f'Base detector {i} is fitted for prediction with k= {k}')    
+        Recall=metrics.recall_score(y_test,test_out)
+        Precision=metrics.precision_score(y_test,test_out)
+        f1_score=metrics.f1_score(y_test,test_out)
+        print(f'f1 score: {f1_score}')
+        print(f'recall: {Recall}')
+        print(f'precision: {Precision}')
+        if f1_score>f1_best:
+            f1_best=f1_score
+            k_best=k
+            Recall_best=Recall
+            Precision_best=Precision
+    
+    print(f"Final Recall for for k= {k_best} is{Recall_best}")
+    print(f"Final Precision for k= {k_best} is : {Precision_best}")
+    print(f"FINAL f1 score for k= {k_best} is: {f1_best}")
+    if method == 'KNN':
+            clf = KNN(n_neighbors=k_best, method='largest')
+    if method == 'LOF':
+            clf = LOF(n_neighbors=k_best)        
+    clf.fit(X_train)
+    test_scores[:, i] = clf.decision_function(X_test)
+    X_test['score']=  clf.decision_function(X_test)
+    
+
+#running KNN
+anomaly_detector('KNN')
