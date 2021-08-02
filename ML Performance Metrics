@@ -11,6 +11,8 @@ Acc=metrics.accuracy_score(Actuals,Pred_Thresh)
 Recall=metrics.recall_score(Actuals,Pred_Thresh)
 Precision=metrics.precision_score(Actuals,Pred_Thresh)
 Confusion_Metrics=metrics.confusion_matrix(Actuals,Pred_Thresh)
+#or
+pd.crosstab(Actuals,Pred_Thresh, rownames=['Actuals'],colnames=['Predicted'])
 AUC=(metrics.roc_auc_score(Actuals,Pred))
 
 print(f"Accurace={Acc}")
