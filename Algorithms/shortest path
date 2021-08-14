@@ -1,0 +1,86 @@
+import numpy as np
+def initialize(n,grid):
+    #print all the moves here
+    for i,j in [(0,0),(n-1,0),(0,n-1),(n-1,n-1)]:
+            if grid[i][j]=='p':
+                p_location=(i,j)
+                break
+    m_location=(int((n-1)/2),int((n-1)/2))
+    adj_metrics=np.ones(shape=(n,n))*100
+    adj_metrics[p_location[0]][p_location[1]]=0
+    print(m_location)
+    return(p_location,m_location,adj_metrics)
+    
+inp=[['-',2,9,7,7],[3,24,2,7,0],[3,24,2,9,9],[3,24,2,4,7],[7,131,9,7,'p']]
+
+
+
+p,m,adj_metrics=initialize(len(inp),inp)
+
+def nearby_value(x,y,grid):
+    #find what is the min cell value of neighbours
+    movement='None'
+    global nearby_loc
+    left=x-1
+    right=x+1
+    up=y-1
+    down=y+1
+    if left < 0:
+        left=x
+    if right > len(grid)-1:
+        right=x
+    if up<0:
+        up=y
+    if down > len(grid)-1:
+        down=y
+    nearby_loc={(right,y):grid[right][y],(left,y):grid[left][y],(x,up):grid[x][up],(x,down):grid[x][down]}
+    new_val= min(nearby_loc.values())+1
+    best_coord=[key for key,value in nearby_loc.items() if value== new_val-1][0]
+    best_coord_list=[key for key,value in nearby_loc.items() if value== new_val-1][0]
+    print(f'bes cord list={best_coord_list}')
+    if best_coord[0]==x-1:
+        movement='UP'
+    elif best_coord[0]==x+1:
+        movement='Down'
+    elif best_coord[1]==y+1:
+        movement='Right'
+    elif best_coord[1]==y-1:
+        movement='Left'
+#    new_val=min(grid[right][y],grid[left][y],grid[x][up],grid[x][down])+1
+    return(new_val,best_coord,movement)
+
+#update adjecency metrics
+
+#calculate looping range
+if p[0]==0:
+    x_range=list(range(len(inp)))
+else:
+    x_range=list(reversed(range(len(inp))))
+    
+if p[1]==0:
+    y_range=list(range(len(inp)))
+else:
+    y_range=list(reversed(range(len(inp))))
+    
+#update
+for i in x_range:
+    for j in y_range:
+        if i==p[0] and j==p[1]:
+            continue
+#        print(f'p={i},{j}')
+        adj_metrics[i][j],_,_= nearby_value(i,j,adj_metrics)
+
+print(adj_metrics)
+
+def displayPathtoPrincess(n,grid):
+    coordinates=m
+    i=0
+    while coordinates != p:
+        i+=1
+        _,best_cor,mov=nearby_value(coordinates[0],coordinates[1],grid)
+        print(f'best_coord={best_cor}, movement={mov},new_val={_}')
+        coordinates=best_cor
+        if i>10:
+            break
+
+displayPathtoPrincess(len(adj_metrics),adj_metrics)
