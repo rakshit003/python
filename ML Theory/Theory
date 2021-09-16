@@ -1,0 +1,11 @@
+#### Supervised Learning:
+      Supervised learning is learning from a training set of labelled examples by a knowlegeble external superviser
+      Each example is a description of a situation together with lable or action system should take in that situation
+      The objective of this learning generalize its response so that it acts correctly in situation not present in the training set
+
+#### Unsupervised Learning:
+      It is typically about finding structure hidden in collection of unlabelled data
+
+#### Reinforcement Learning:
+      RL is learning from agent environment interactions and the goal is to maximize a numerical reward signal
+      Learner is not told which action to take but instead must discover what actions yield the most reward by trying them.
