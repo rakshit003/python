@@ -1,0 +1,84 @@
+#####Language Model#######
+
+  A key building block for an auto-complete system is a language model. 
+  A language model assigns the probability to a sequence of words, in a way that more "likely" sequences receive higher scores. For example
+  "I have a pen" is expected to have a higher probability than "I am a pen" since the first one seems to be a more natural sentence in the real world.
+
+Steps to build a language model
+  1. Load and preprocess data
+        Load and tokenize data.
+        Split the sentences into train and test sets.
+        Replace words with a low frequency by an unknown marker <unk>.
+  2. Develop N-gram based language models
+        Compute the count of n-grams from a given data set.
+        Estimate the conditional probability of a next word with k-smoothing.
+  3. Evaluate the N-gram models by computing the perplexity score.
+  4. Use your own model to suggest an upcoming word given your sentence.
+  
+  
+  # UNQ_C1 (UNIQUE CELL IDENTIFIER, DO NOT EDIT)
+
+### tokenize corpus into list of sentences ###
+def split_to_sentences(data):
+    """
+    Split data by linebreak "\n"
+    """
+    sentences = data.split('\n')
+    
+    # Additional clearning (This part is already implemented)
+    # - Remove leading and trailing spaces from each sentence
+    # - Drop sentences if they are empty strings.
+    sentences = [s.strip() for s in sentences]
+    sentences = [s for s in sentences if len(s) > 0]
+    
+    return sentences
+    
+
+### tokenize senstences into list of words ###
+
+def tokenize_sentences(sentences):
+    """
+    Tokenize sentences into tokens (words)
+
+    """
+    
+    # Initialize the list of lists of tokenized sentences
+    tokenized_sentences = []
+    # Go through each sentence
+    for sentence in sentences:
+        
+        # Convert to lowercase letters
+        sentence = sentence.lower()
+        
+        # Convert into a list of words
+        tokenized = nltk.word_tokenize(sentence)
+        
+        # append the list of words to the list of lists
+        tokenized_sentences.append(tokenized)
+    
+    ### END CODE HERE ###
+    
+    return tokenized_sentences
+    
+    
+    ##end to end task##
+def get_tokenized_data(data):
+
+    sentences = split_to_sentences(data)
+    
+    # Get the list of lists of tokens by tokenizing the sentences
+    tokenized_sentences = tokenize_sentences(sentences)
+
+    return tokenized_sentences
+    
+    x = "Sky is blue.\nLeaves are green\nRoses are red."
+    get_tokenized_data(x)
+    
+    #split to train and test set
+    tokenized_data = get_tokenized_data(data)
+random.seed(87)
+random.shuffle(tokenized_data)
+
+train_size = int(len(tokenized_data) * 0.8)
+train_data = tokenized_data[0:train_size]
+test_data = tokenized_data[train_size:]
