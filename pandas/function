@@ -20,3 +20,11 @@ df_cols = pd.read_csv("dates_text_cols.csv", parse_dates={"date": ["y", "m", "d"
 
 pd.read_csv("custom_dt_fmt.csv", parse_dates=["date"], date_parser=lambda x: datetime.strptime(x, "%b_%d_%Y"))
 The tricky thing here is to define the proper date format in the strptime method.
+
+****************processing dates in pandas*********
+
+>>> pd.to_datetime("Jan 01, 2022")
+Timestamp('2022-01-01 00:00:00')
+>>> pd.to_datetime(["01/01/2022", "01/02/2022", "01/03/2022"])
+DatetimeIndex(['2022-01-01', '2022-01-02', '2022-01-03'], dtype='datetime64[ns]', freq=None)
+>>> pd.to_datetime(pd.Series(["01/01/2022", "01/02/2022", "01/03/2022"]))
