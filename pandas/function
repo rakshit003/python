@@ -1,5 +1,6 @@
-Reading data as date from external file
+************Reading data as date from external file************************
 
+Automatic
 It should be noted that Pandas integrates powerful date parsers such that many different kinds of dates can be parsed automatically. 
 Thus, you usually just need to set the parse_date parameter.
 
@@ -14,3 +15,8 @@ y,m,d,category,balance
 2022,03,12,C,300
 
 df_cols = pd.read_csv("dates_text_cols.csv", parse_dates={"date": ["y", "m", "d"]})
+
+**customized date parser
+
+pd.read_csv("custom_dt_fmt.csv", parse_dates=["date"], date_parser=lambda x: datetime.strptime(x, "%b_%d_%Y"))
+The tricky thing here is to define the proper date format in the strptime method.
