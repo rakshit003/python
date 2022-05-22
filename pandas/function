@@ -4,3 +4,13 @@ It should be noted that Pandas integrates powerful date parsers such that many d
 Thus, you usually just need to set the parse_date parameter.
 
 df = pd.read_csv("dates_text.csv", parse_dates=["date"])
+
+if date values are spread across multiple columns then read like this
+
+**data**
+y,m,d,category,balance
+2022,01,01,A,100
+2022,02,02,B,200
+2022,03,12,C,300
+
+df_cols = pd.read_csv("dates_text_cols.csv", parse_dates={"date": ["y", "m", "d"]})
