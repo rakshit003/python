@@ -23,7 +23,7 @@ The tricky thing here is to define the proper date format in the strptime method
 
 ****************processing dates in pandas*********
 
->>> pd.to_datetime("Jan 01, 2022")
+>>> pd.to_datetime("Jan 01, 2022") #to_datetime function converts any date string to pandas datetime object
 Timestamp('2022-01-01 00:00:00')
 >>> pd.to_datetime(["01/01/2022", "01/02/2022", "01/03/2022"])
 DatetimeIndex(['2022-01-01', '2022-01-02', '2022-01-03'], dtype='datetime64[ns]', freq=None)
