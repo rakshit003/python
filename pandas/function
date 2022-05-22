@@ -34,5 +34,7 @@ DatetimeIndex(['2022-01-01', '2022-01-02', '2022-01-03'], dtype='datetime64[ns]'
 pd.date_range(start="12/01/2022", end="12/07/2022")
 DatetimeIndex(['2022-12-01', '2022-12-02', '2022-12-03', '2022-12-04',
                '2022-12-05', '2022-12-06', '2022-12-07'],
-               
-               
+
+**sepeating date from time using dt class
+>>> df["date"] = df["timestamp"].dt.date
+>>> df["time"] = df["timestamp"].dt.time
