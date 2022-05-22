@@ -40,3 +40,8 @@ DatetimeIndex(['2022-12-01', '2022-12-02', '2022-12-03', '2022-12-04',
 >>> df["time"] = df["timestamp"].dt.time
 
 or dt.month, dt.year, dt.weekday -- all are possible
+
+
+**************iterating over dataframes**************
+for index, row in df.iterrows():
+  print(row["firstname"])
