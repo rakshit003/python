@@ -1,0 +1,6 @@
+Reading data as date from external file
+
+It should be noted that Pandas integrates powerful date parsers such that many different kinds of dates can be parsed automatically. 
+Thus, you usually just need to set the parse_date parameter.
+
+df = pd.read_csv("dates_text.csv", parse_dates=["date"])
