@@ -50,3 +50,13 @@ for index, row in df.iterrows():
 iloc is conceptually simpler than loc because it ignores the dataset's indices. 
 When we use iloc we treat the dataset like a big matrix (a list of lists), one that we have to index into by position. 
 loc, by contrast, uses the information in the indices to do its work. 
+
+
+***Filtering
+
+reviews.loc[(reviews.country == 'Italy') & (reviews.points >= 90)]
+
+Filtering multiple values
+#if you have a lot of values to filter on a column the use isin
+
+reviews.loc[reviews.country.isin(['Italy', 'France'])]
