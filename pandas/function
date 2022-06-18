@@ -112,3 +112,6 @@ df_rank=df.groupby('claim_num').apply(lambda df:  df.sort_values('change_date',a
 Another groupby() method worth mentioning is agg(), which lets you run a bunch of different functions on your DataFrame simultaneously. 
 For example, we can generate a simple statistical summary of the dataset as follows:
 reviews.groupby(['country']).price.agg([len, min, max])
+
+group columns are created as multi index, inorder to reset them yo normal columns use below command
+countries_reviewed.reset_index()
