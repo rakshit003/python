@@ -104,3 +104,5 @@ This DataFrame is accessible to us directly using the apply() method, and we can
 
 For example, here's one way of selecting the name of the first wine reviewed from each winery in the dataset:
 reviews.groupby('winery').apply(lambda df: df.title.iloc[0]) #instead of a row entire data frame slice of the group is passed
+
+df_rank=df.groupby('claim_num').apply(lambda df:  df.sort_values('change_date',ascending=False).iloc[0])
