@@ -63,7 +63,25 @@ reviews.loc[reviews.country.isin(['Italy', 'France'])]
 reviews.loc[reviews.price.notnull()]
 reviews.loc[reviews.price.isnull()]
 
-****Assigning values
+****************Assigning values************************
 
 reviews['critic'] = 'everyone' #constant value
 reviews['index_backwards'] = range(len(reviews), 0, -1) #range
+
+*****apply and map functions**********
+If we had called reviews.apply() with axis='index', 
+then instead of passing a function to transform each row, 
+we would need to give a function to transform each column.
+
+Note that map() and apply() return new, transformed Series and DataFrames, respectively. 
+They don't modify the original data they're called on. 
+If we look at the first row of reviews, we can see that it still has its original points value.
+
+def remean_points(row):
+    row.points = row.points - review_points_mean
+    return row
+
+reviews.apply(remean_points, axis='columns')
+
+review_points_mean = reviews.points.mean()
+reviews.points.map(lambda p: p - review_points_mean)
