@@ -69,6 +69,8 @@ reviews['critic'] = 'everyone' #constant value
 reviews['index_backwards'] = range(len(reviews), 0, -1) #range
 
 *****apply and map functions**********
+Maps allow us to transform data in a DataFrame or Series one value at a time for an entire column.
+
 If we had called reviews.apply() with axis='index', 
 then instead of passing a function to transform each row, 
 we would need to give a function to transform each column.
