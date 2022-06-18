@@ -106,3 +106,9 @@ For example, here's one way of selecting the name of the first wine reviewed fro
 reviews.groupby('winery').apply(lambda df: df.title.iloc[0]) #instead of a row entire data frame slice of the group is passed
 
 df_rank=df.groupby('claim_num').apply(lambda df:  df.sort_values('change_date',ascending=False).iloc[0])
+
+
+**group by with agg**
+Another groupby() method worth mentioning is agg(), which lets you run a bunch of different functions on your DataFrame simultaneously. 
+For example, we can generate a simple statistical summary of the dataset as follows:
+reviews.groupby(['country']).price.agg([len, min, max])
