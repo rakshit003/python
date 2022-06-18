@@ -45,3 +45,8 @@ or dt.month, dt.year, dt.weekday -- all are possible
 **************iterating over dataframes**************
 for index, row in df.iterrows():
   print(row["firstname"])
+  
+**********indexing*******************
+iloc is conceptually simpler than loc because it ignores the dataset's indices. 
+When we use iloc we treat the dataset like a big matrix (a list of lists), one that we have to index into by position. 
+loc, by contrast, uses the information in the indices to do its work. 
