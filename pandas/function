@@ -1,4 +1,4 @@
-************Reading data as date from external file************************
+************ Reading data as date from external file ************************
 
 Automatic
 It should be noted that Pandas integrates powerful date parsers such that many different kinds of dates can be parsed automatically. 
