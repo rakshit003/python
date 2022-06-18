@@ -60,3 +60,10 @@ Filtering multiple values
 #if you have a lot of values to filter on a column the use isin
 
 reviews.loc[reviews.country.isin(['Italy', 'France'])]
+reviews.loc[reviews.price.notnull()]
+reviews.loc[reviews.price.isnull()]
+
+****Assigning values
+
+reviews['critic'] = 'everyone' #constant value
+reviews['index_backwards'] = range(len(reviews), 0, -1) #range
