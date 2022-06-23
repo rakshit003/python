@@ -115,3 +115,8 @@ reviews.groupby(['country']).price.agg([len, min, max])
 
 group columns are created as multi index, inorder to reset them yo normal columns use below command
 countries_reviewed.reset_index()
+
+
+/**********merging two data frame **********/
+
+pd.merge(df1,df2,on='col_name', how ='inner')
