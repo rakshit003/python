@@ -24,6 +24,11 @@ df = pd.read_csv("/content/melb_housing.csv",usecols = ["Suburb", "Address", "Da
 pd.read_csv("custom_dt_fmt.csv", parse_dates=["date"], date_parser=lambda x: datetime.strptime(x, "%b_%d_%Y"))
 The tricky thing here is to define the proper date format in the strptime method.
 
+****missing values**********
+
+sun all missing values group by respective colums
+df.isna().sum()
+
 ****************processing dates in pandas*********
 
 >>> pd.to_datetime("Jan 01, 2022") #to_datetime function converts any date string to pandas datetime object
