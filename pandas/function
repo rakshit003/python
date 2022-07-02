@@ -16,6 +16,9 @@ y,m,d,category,balance
 
 df_cols = pd.read_csv("dates_text_cols.csv", parse_dates={"date": ["y", "m", "d"]})
 
+Also we can only read specific columns in data frame by using 'usecols' option like below:
+df = pd.read_csv("/content/melb_housing.csv",usecols = ["Suburb", "Address", "Date","Distance", "Price"])
+
 **customized date parser
 
 pd.read_csv("custom_dt_fmt.csv", parse_dates=["date"], date_parser=lambda x: datetime.strptime(x, "%b_%d_%Y"))
