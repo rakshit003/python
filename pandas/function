@@ -159,3 +159,10 @@ invoices['Meal Price'].apply(lambda x: type(x)).value_counts()
 invoices['Meal Price'][invoices['Meal Price'].apply(
   lambda x: isinstance(x,str).   #str for invalid strings 
 )]
+
+# convert the offending values into np.nan
+invoices['Meal Price'] = pd.to_numeric(invoices['Meal Price'],errors='coerce')
+# fill np.nan with the median of the data
+invoices['Meal Price'] = invoices['Meal Price'].fillna(invoices['Meal Price'].median())
+# convert the column into integer
+invoices['Meal Price'].astype(int)
