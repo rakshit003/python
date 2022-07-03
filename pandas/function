@@ -199,6 +199,8 @@ We can use the results to filter our data down to only rows, where Date of Meal 
 
 invoices[invoices['Date of Meal'].dt.is_month_end]
 
+invoices['Date of Meal'].dt.year.value_counts().sort_index(). #another handy example
+
 to_pydatetime(), which converts the Pandas datetime into a regular Python datetime format (which you might need sometimes) and
 invoices['Date of Meal'].dt.to_pydatetime()
 
