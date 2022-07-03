@@ -180,6 +180,9 @@ dt
 str
 cat
 
+
+**dt accessor
+
 invoices['Date of Meal'].dt.date
 invoices['Date of Meal'].dt.weekday_name
 invoices['Date of Meal'].dt.month_name()
@@ -195,3 +198,22 @@ invoices[invoices['Date of Meal'].dt.is_month_end]
 to_pydatetime(), which converts the Pandas datetime into a regular Python datetime format (which you might need sometimes) and
 invoices['Date of Meal'].dt.to_pydatetime()
 
+
+** str accessor
+
+invoices['Type of Meal'].str.lower()
+ljust(width), rjust(width), center(width), zfill(width) to control the positioning of strings. 
+All of them take a total width of the desired resulting string as an input. ljust, rjust, 
+and center fill the difference to the desired length with whitespaces.zfill adds that many leading zeroes. 
+ljust is left-bound, rjustis right-bound.
+
+startswith(<substring>), endswith(<substring>), contains(<substring>) checks for the presence of a substring
+this bulean values can then be used to subset a df
+
+**cast accessor
+
+invoices['Type of Meal'].cat.categories
+invoices['Type of Meal'].cat.codes #codes for quick conversion of the category into its numerical representation (underlying order of ordered list)
+invoices['Type of Meal'].cat.reorder_categories(['Lunch','Breakfast','Dinner'])
+
+*********************
