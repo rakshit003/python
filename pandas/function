@@ -157,5 +157,5 @@ we can use below command to find on how many values are these
 
 invoices['Meal Price'].apply(lambda x: type(x)).value_counts()
 invoices['Meal Price'][invoices['Meal Price'].apply(
-  lambda x: isinstance(x,str)
+  lambda x: isinstance(x,str).   #str for invalid strings 
 )]
