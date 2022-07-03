@@ -53,7 +53,6 @@ DatetimeIndex(['2022-12-01', '2022-12-02', '2022-12-03', '2022-12-04',
 or dt.month, dt.year, dt.weekday -- all are possible
 provide custom format
 
-
 **************iterating over dataframes**************
 for index, row in df.iterrows():
   print(row["firstname"])
@@ -192,3 +191,7 @@ is_leap_year, is_month_start, is_month_end, is_quarter_start, is_quarter_end, is
 We can use the results to filter our data down to only rows, where Date of Meal is at the month's end.
 
 invoices[invoices['Date of Meal'].dt.is_month_end]
+
+to_pydatetime(), which converts the Pandas datetime into a regular Python datetime format (which you might need sometimes) and
+invoices['Date of Meal'].dt.to_pydatetime()
+
