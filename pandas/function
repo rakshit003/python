@@ -106,7 +106,8 @@ reviews.points.map(lambda p: p - review_points_mean)
 *********group by operator*************
 groupby() created a group of reviews which allotted the same point values to the given wines.
 Then, for each of these groups, we grabbed the points() column and counted how many times it appeared. 
-value_counts() is just a shortcut to this groupby() operation.
+value_counts() is just a shortcut to this groupby() operation. It converts series values into index and counts as values, 
+                                                               so any index operators can be used on top of it
 
 We can use any of the summary functions we've used before with this data. 
 For example, to get the cheapest wine in each point value category, we can do the following:
