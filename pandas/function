@@ -196,6 +196,10 @@ You would typically use the left_on and right_on parameters when the columns are
 You might have seen the usage of jointo the same end asmerge. join by default merges on the index of both DataFrames. 
 I advise against the usage of joinas it is just a special case of mergeand does not provide a benefit over merging.
 
+***map function
+map is used for a quick lookup join
+
+
 /********* Data Types and data conversion**************/
 
 There are 7 data types in pandas
