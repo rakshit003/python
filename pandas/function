@@ -135,7 +135,66 @@ countries_reviewed.reset_index()
 
 /**********merging two data frame **********/
 
+***concat
+pd.concat takes a couple of optional parameters next to the list of DataFrames that you call concat on:
+axis : 0 for vertical, 1 for horizontal. axis defaults to 0
+join : 'inner' for the intersection , join defaults to outer
+When we use axis=0 and join='inner' we will consider only overlapping columns
+When using axis=1 and join='inner' we consider only overlapping indices
+In the case of outer non-overlapping columns/indices will be filled with nan values 
+
+ignore_index : True to ignore preexisting indices and instead use labels from 0 to n-1 for the resulting DataFrame. ignore_index defaults to False
+pd.concat(<LIST OF DATAFRAMES>). ##vertical concat
+
+**merge
+
+Merging, as opposed to concatenating DataFrames together, allows us to combine two DataFrames in a more traditional SQL-query kind of way
+When merging DataFrames, most of the time you want some information from one source and another piece of information from another source. 
+Whereas when concatenating your DataFrames are structurally and in terms of content quite similar, and you want to combine them into one unified DataFrame.
+
 pd.merge(df1,df2,on='col_name', how ='inner')
+
+pd.merge(
+ left, 
+ right, 
+ how='inner', 
+ on=None, 
+ left_on=None, 
+ right_on=None,         
+ left_index=False,
+ right_index=False, 
+ sort=True,
+ suffixes=('_x', '_y'), 
+ copy=True, 
+ indicator=False,
+ validate=None
+) -> pd.DataFrame
+
+# left_index/right_index : If True, use the index from the left/right DataFrame to merge on. left_index/right_index defaults to False
+
+#left_on/right_on : Column name(s) from the left/right DataFrame to join on. Typical use case: Keys you are joining on are differently labeled in your DataFrames. E.g., what is location_id in your left DataFrame, might be _id in your right DataFrame. 
+In this case, you would do left_on='location_id', right_on='_id' 
+
+#suffixes: A tuple of string suffixes to apply to overlapping columns. suffixes defaults to ('_x', '_y'). I like to use ('_base', '_joined')
+
+
+if no parametres specified merge happens on all common columns
+
+##on
+If we do explicitly provide an on parameter this will override the default behavior and try to find the provided column in both DataFrames. 
+Remaining duplicated columns that are not being used to merge on will be suffixed.
+
+pd.merge(order_data,invoices,on='Order Id')
+
+We can also specify custom suffixes like this: default suffix is name of original df
+pd.merge(order_data,invoices,on='Order Id',suffixes=('_base','_join'))
+
+#left_on , right_on
+You would typically use the left_on and right_on parameters when the columns are named differently in the two DataFrames.
+
+****join function
+You might have seen the usage of jointo the same end asmerge. join by default merges on the index of both DataFrames. 
+I advise against the usage of joinas it is just a special case of mergeand does not provide a benefit over merging.
 
 /********* Data Types and data conversion**************/
 
