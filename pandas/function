@@ -33,6 +33,8 @@ The tricky thing here is to define the proper date format in the strptime method
 sun all missing values group by respective colums
 df.isna().sum()
 
+
+
 ****************processing dates in pandas*********
 
 >>> pd.to_datetime("Jan 01, 2022") #to_datetime function converts any date string to pandas datetime object
@@ -199,6 +201,26 @@ I advise against the usage of joinas it is just a special case of mergeand does 
 ***map function
 map is used for a quick lookup join
 map always has to be a series or a dictionary, mapping fields should be the index of the series or keys of a dictionary
+
+
+**************Transposing *****************
+
+**Transpose
+Transposing a DataFrame means to swap the index and column. In other words, you are rotating the DataFrame around the origin.
+                                                            (or rotating row index - col index)
+Transposing does not change the content of the DataFrame. T
+he DataFrame only changes the orientation. Let’s visualize this with an example
+
+A DataFrame is transposed by simply calling .T on the DataFrame e.g.invoices.T)
+
+**Melt
+Melt transforms a DataFrame from wide format to long format. Melt gives flexibility around how the transformation should take place. 
+In other words, melt allows grabbing columns and transforming them into rows while leaving other columns unchanged
+
+Melt is useful to transform a DataFrame into a format where one or more columns are identifier variables (id_vars), while all other columns, 
+considered measured variables (value_vars), are moved to the row axis, leaving just two non-identifier columns. 
+For each column we melt (value_vars), the corresponding existing row is duplicated to accommodate fusing data into a single column and 
+our DataFrame extends. After melting, we have three times as many rows as before (because we used three value_vars and thus triplicated every row).
 
 /********* Data Types and data conversion**************/
 
