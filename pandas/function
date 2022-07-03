@@ -128,3 +128,32 @@ countries_reviewed.reset_index()
 /**********merging two data frame **********/
 
 pd.merge(df1,df2,on='col_name', how ='inner')
+
+/********* Data Types and data conversion**************/
+
+There are 7 data types in pandas
+
+object : This data type is used for strings (i.e., sequences of characters)
+int64 : Used for integers (whole numbers, no decimals)
+float64 : Used for floating-point numbers (i.e., figures with decimals/fractions)
+bool : Used for values that can only be True/False
+datetime64 : Used for date and time values
+timedelta : Used to represent the difference between datetimes
+category : Used for values that take one out of a limited number of available options (categories don’t have to, but can have explicit ordering)
+
+
+Converting data types
+There are two standard ways of converting pandas data types:
+
+<column>.astype(<desired type>)
+conversion helper functions, like pd.to_numeric or pd.to_datetime
+
+invoices['Date'] = invoices['Date'].astype('datetime64')
+invoices['Date'] = invoices['Date'].todatetime()
+
+Error in value type
+if while converting we get an error which means few values in the field are of a datatype that can not be converted
+we can use below command to find on how many values are these
+
+invoices['Meal Price'].apply(lambda x: type(x)).value_counts()
+
