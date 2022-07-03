@@ -106,6 +106,9 @@ review_points_mean = reviews.points.mean()
 reviews.points.map(lambda p: p - review_points_mean)
 
 *********group by operator*************
+Groupby will result in an aggregated DataFrame with a new index (the values of the columns, by which you are grouping). 
+If you are grouping by more than one value, the resulting DataFrame will have a multi-index
+
 groupby() created a group of reviews which allotted the same point values to the given wines.
 Then, for each of these groups, we grabbed the points() column and counted how many times it appeared. 
 value_counts() is just a shortcut to this groupby() operation. It converts series values into index and counts as values, 
