@@ -202,6 +202,8 @@ invoices['Date of Meal'].dt.to_pydatetime()
 ** str accessor
 
 invoices['Type of Meal'].str.lower()
+invoices['Type of Meal'].str.split(',')  # splits a string seperated by commas into list of strings, 
+invoices['Type of Meal'].str.split(',').apply(lambda x: x[0]) # you can use apply function to access the list
 ljust(width), rjust(width), center(width), zfill(width) to control the positioning of strings. 
 All of them take a total width of the desired resulting string as an input. ljust, rjust, 
 and center fill the difference to the desired length with whitespaces.zfill adds that many leading zeroes. 
