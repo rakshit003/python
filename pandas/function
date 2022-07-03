@@ -149,7 +149,7 @@ There are two standard ways of converting pandas data types:
 conversion helper functions, like pd.to_numeric or pd.to_datetime
 
 invoices['Date'] = invoices['Date'].astype('datetime64')
-invoices['Date'] = invoices['Date'].todatetime()
+invoices['Date'] = pd.todatetime(invoices['Date'])
 
 Error in value type
 if while converting we get an error which means few values in the field are of a datatype that can not be converted
