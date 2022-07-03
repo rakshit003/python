@@ -198,7 +198,7 @@ I advise against the usage of joinas it is just a special case of mergeand does 
 
 ***map function
 map is used for a quick lookup join
-
+map always has to be a series or a dictionary, mapping fields should be the index of the series or keys of a dictionary
 
 /********* Data Types and data conversion**************/
 
