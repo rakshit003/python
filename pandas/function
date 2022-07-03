@@ -156,4 +156,6 @@ if while converting we get an error which means few values in the field are of a
 we can use below command to find on how many values are these
 
 invoices['Meal Price'].apply(lambda x: type(x)).value_counts()
-
+invoices['Meal Price'][invoices['Meal Price'].apply(
+  lambda x: isinstance(x,str)
+)]
