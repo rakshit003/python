@@ -37,6 +37,9 @@ Timestamp('2022-01-01 00:00:00')
 DatetimeIndex(['2022-01-01', '2022-01-02', '2022-01-03'], dtype='datetime64[ns]', freq=None)
 >>> pd.to_datetime(pd.Series(["01/01/2022", "01/02/2022", "01/03/2022"]))
 
+pd.to_datetime('20190108',format='%Y%d%m')
+With exact=False Pandas tries to match the pattern anywhere in the date string.
+print(pd.to_datetime('yolo 20190108', format='%Y%d%m', exact=False))
 **creating date range in pandas
 
 pd.date_range(start="12/01/2022", end="12/07/2022")
@@ -49,7 +52,7 @@ DatetimeIndex(['2022-12-01', '2022-12-02', '2022-12-03', '2022-12-04',
 
 or dt.month, dt.year, dt.weekday -- all are possible
 provide custom format
-pd.to_datetime('20190108',format='%Y%d%m')
+
 
 **************iterating over dataframes**************
 for index, row in df.iterrows():
