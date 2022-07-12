@@ -137,6 +137,31 @@ reviews.groupby(['country']).price.agg([len, min, max])
 group columns are created as multi index, inorder to reset them yo normal columns use below command
 countries_reviewed.reset_index()
 
+****Iterating through groups*****
+grouped = df.groupby('A')
+
+for name, group in grouped:
+    print(name)  #prints group name
+    print(group)  #prints group records one at a time
+
+for multi index groups 
+for name, group in df.groupby(['A', 'B']) # name will be a tuple value
+
+**Selecting a group
+grouped.get_group("bar") #capture all records of the group
+or
+df.groupby(["A", "B"]).get_group(("bar", "one"))
+
+**Aggregation on group
+grouped = df.groupby("A")
+grouped.aggregate(np.sum)
+grouped = df.groupby(["A", "B"], as_index=False)  #remove index from group values
+#multiple aggregators
+grouped["C"].agg([np.sum, np.mean, np.std])
+
+*customized aggregators
+grouped["C"].agg([lambda x: x.max() - x.min(), lambda x: x.median() - x.mean()])
+
 
 /**********merging two data frame **********/
 
