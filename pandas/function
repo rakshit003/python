@@ -37,6 +37,15 @@ df.isna().sum()
 
 ****************processing dates in pandas*********
 
+date object is a called a datetime object
+
+import datetime as dt
+dt.datetime.strptime('2021-05-30','%Y-%m-%d') #converts a date string to datetime object
+dt.datetime.now().strftime('%Y-%m-%d') #converts a datetime object to a string
+dt.datetime.now()-dt.datetime.now() = datetime delta object give diff in days and seconds
+
+df['new_str']=df.new.map(lambda x: dt.datetime.strftime(x,'%Y-%m-%d'))
+
 >>> pd.to_datetime("Jan 01, 2022") #to_datetime function converts any date string to pandas datetime object
 Timestamp('2022-01-01 00:00:00')
 >>> pd.to_datetime(["01/01/2022", "01/02/2022", "01/03/2022"])
