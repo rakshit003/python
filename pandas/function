@@ -102,6 +102,9 @@ reviews['index_backwards'] = range(len(reviews), 0, -1) #range
 
 *****apply and map functions**********
 Maps allow us to transform data in a DataFrame or Series one value at a time for an entire column.
+generally in order to update columns we can use inbuild functions along with accessors(str,dt,cat) or assignment operator for basic updates
+But if the update is more complex , its better to use apply,map etc functions to udpate each record/value one at a time and we can create user
+defined function to update them
 
 If we had called reviews.apply() with axis='index', 
 then instead of passing a function to transform each row, 
