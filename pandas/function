@@ -123,6 +123,10 @@ reviews.apply(remean_points, axis='columns')
 review_points_mean = reviews.points.mean()
 reviews.points.map(lambda p: p - review_points_mean)
 
+apply and map return same results when applied on series object
+when apply is used on data frame object, it pass 1 coulm series at a time so the function should be an aggregated function tu retun series out
+inorder to apply function on each value of data frame use applymap
+
 *********group by operator*************
 Groupby will result in an aggregated DataFrame with a new index (the values of the columns, by which you are grouping). 
 If you are grouping by more than one value, the resulting DataFrame will have a multi-index
