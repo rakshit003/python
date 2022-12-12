@@ -77,6 +77,11 @@ iloc is conceptually simpler than loc because it ignores the dataset's indices.
 When we use iloc we treat the dataset like a big matrix (a list of lists), one that we have to index into by position. 
 loc, by contrast, uses the information in the indices to do its work. 
 
+****
+LOC
+first argument to loc is rows needed in output(generally bullean values). Second argument is columns needed in out
+if dont use loc, we can select specific columns
+eg: df.loc['name'='xx','email']
 
 ***Filtering
 
