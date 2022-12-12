@@ -81,7 +81,8 @@ loc, by contrast, uses the information in the indices to do its work.
 LOC
 first argument to loc is rows needed in output(generally bullean values). Second argument is columns needed in out
 if dont use loc, we can select specific columns
-eg: df.loc['name'='xx','email']
+eg: df.loc['name'=='xx','email'] or df.loc[[2,3],['list','colums']]
+loc is also used to updated a specific row/rows and column/columns with same syntax as above in left side of assignment operator
 
 ***Filtering
 
