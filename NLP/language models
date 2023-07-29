@@ -7,6 +7,8 @@ of those words.
 So in extension to that , a lot of thoughts and concepts of the world are or have been written and expressed in language and
 if NLP is a way to process that language then it has the capabilities to learn these concepts about world and ideas as well
 
+Its usecase are like summarizing , questoin answering, detecting toxic quotes in social media etc.
+
   A key building block for an auto-complete system is a language model. 
   A language model assigns the probability to a sequence of words, in a way that more "likely" sequences receive higher scores. For example
   "I have a pen" is expected to have a higher probability than "I am a pen" since the first one seems to be a more natural sentence in the real world.
