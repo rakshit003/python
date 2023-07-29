@@ -12,7 +12,7 @@ Next Application is Promt engineering
 **English Language Structure**
 Subject -- Verbe -- Object
 for language models you donot need to explicitly give these language huristics to undersatand the grammer,
-instead they learn it byself using large volumes of input data ... just like babies
+instead they learn it byself using large volumes of input data ... just like babies.
 
 Its usecase are like summarizing , questoin answering, detecting toxic quotes in social media etc.
 
