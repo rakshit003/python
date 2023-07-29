@@ -1,5 +1,10 @@
 #####Language Model#######
 
+The current Language models not only predicts the best word given the context of preceeding words but also use world knowldege to produce
+that word. for eg, if you ask any AI about medicine for a given underlying condition it not only use english grammer knowledge
+to craft out an accurate sentance but also knowledge gained from medicine books to emmit out the best possible medicne in context
+of those words.
+
   A key building block for an auto-complete system is a language model. 
   A language model assigns the probability to a sequence of words, in a way that more "likely" sequences receive higher scores. For example
   "I have a pen" is expected to have a higher probability than "I am a pen" since the first one seems to be a more natural sentence in the real world.
