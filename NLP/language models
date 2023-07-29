@@ -3,7 +3,9 @@
 The current Language models not only predicts the best word given the context of preceeding words but also use world knowldege to produce
 that word. for eg, if you ask any AI about medicine for a given underlying condition it not only use english grammer knowledge
 to craft out an accurate sentance but also knowledge gained from medicine books to emmit out the best possible medicne in context
-of those words.
+of those words. 
+So in extension to that , a lot of thoughts and concepts of the world are or have been written and expressed in language and
+if NLP is a way to process that language then it has the capabilities to learn these concepts about world and ideas as well
 
   A key building block for an auto-complete system is a language model. 
   A language model assigns the probability to a sequence of words, in a way that more "likely" sequences receive higher scores. For example
