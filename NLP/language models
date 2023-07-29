@@ -9,6 +9,9 @@ if NLP is a way to process that language then it has the capabilities to learn t
 
 Next Application is Promt engineering
 
+**English Language Structure**
+Subject -- Verbe -- Object
+
 Its usecase are like summarizing , questoin answering, detecting toxic quotes in social media etc.
 
   A key building block for an auto-complete system is a language model. 
